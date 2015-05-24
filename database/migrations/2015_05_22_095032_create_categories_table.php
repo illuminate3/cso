@@ -18,7 +18,7 @@ class CreateCategoriesTable extends Migration {
 			$table->increments('id');
 			$table->string("slug")->unique()->index();
 			$table->string("name");
-			$table->integer("active");
+			$table->boolean("active");
 			$table->timestamps();
 			Kalnoy\Nestedset\NestedSet::columns($table);
 		});

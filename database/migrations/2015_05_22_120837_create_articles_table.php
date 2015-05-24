@@ -21,7 +21,7 @@ class CreateArticlesTable extends Migration {
 			$table->string('title');
 			$table->string('keywords');
 			$table->text('text');
-			$table->integer('active');
+			$table->boolean('active');
 			$table->timestamps();
 		});
 	}

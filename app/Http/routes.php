@@ -12,6 +12,7 @@
 */
 
 Route::get('/', 'PageController@index');
+Route::get('page/personal','PageController@personal');
 Route::get('page/{category}', ['as'=>'article.show','uses'=>'PageController@show']);
 
 Route::bind('category',function($slug){
@@ -19,6 +20,7 @@ Route::bind('category',function($slug){
 	return App\Model\Category::where('slug','=',$slug)->first();
 
 });
+
 
 /*
 Route::controllers([

@@ -52,7 +52,7 @@ return [
 	|
 	*/
 
-	'locale' => 'en',
+	'locale' => 'ru',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -135,7 +135,9 @@ return [
 		'Illuminate\Translation\TranslationServiceProvider',
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
-
+		'SleepingOwl\Admin\AdminServiceProvider',
+		'Maatwebsite\Excel\ExcelServiceProvider',
+		'Laravelrus\LocalizedCarbon\LocalizedCarbonServiceProvider',
 		/*
 		 * Application Service Providers...
 		 */
@@ -145,7 +147,10 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 		'Menu\MenuServiceProvider',
-		'App\Providers\MenuServiceProvider'
+		'App\Providers\MenuServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
+		'Illuminate\Html\HtmlServiceProvider',
+			
 
 	],
 
@@ -195,6 +200,20 @@ return [
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
 		'Menu' => 'Menu\Menu',
+		'Admin'         => 'SleepingOwl\Admin\Admin',
+		'AdminAuth'     => 'SleepingOwl\AdminAuth\Facades\AdminAuth',
+		'Column'        => 'SleepingOwl\Admin\Columns\Column',
+		'ColumnFilter'  => 'SleepingOwl\Admin\ColumnFilters\ColumnFilter',
+		'Filter'        => 'SleepingOwl\Admin\Filter\Filter',
+		'AdminDisplay'  => 'SleepingOwl\Admin\Display\AdminDisplay',
+		'AdminForm'     => 'SleepingOwl\Admin\Form\AdminForm',
+		'AdminTemplate' => 'SleepingOwl\Admin\Templates\Facade\AdminTemplate',
+		'FormItem'      => 'SleepingOwl\Admin\FormItems\FormItem',
+		'Form'=> 'Illuminate\Html\FormFacade',
+		'HTML'=> 'Illuminate\Html\HtmlFacade',
+		'Excel' => 'Maatwebsite\Excel\Facades\Excel',
+		'LocalizedCarbon'   => 'Laravelrus\LocalizedCarbon\LocalizedCarbon',
+		'DiffFormatter'     => 'Laravelrus\LocalizedCarbon\DiffFactoryFacade',
 
 	],
 
