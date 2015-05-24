@@ -48,14 +48,17 @@ class PageController extends Controller {
 	}
 	
 	/*
-	 * return mixed
+	 * return response
 	 */
 	
 	public function personal(Personal $personal,Category $category,Request $request){
 		
+		/*this is shame need's for count in table first column with paginator */
 		$i = $request->query('page')*30;
 		if($request->query('page')==1)
 			$i=0;
+		/******************************/
+		
 		$category = $category->where('slug','=','personal')->first();
 		$articles = $personal->paginate(30);
 		//$files = $category->files()->get();
