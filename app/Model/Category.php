@@ -5,6 +5,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Category extends \Kalnoy\Nestedset\Node {
 
+	protected $guarded = [];
 	public function articles(){
 		return $this->hasMany('App\Model\Article');
 	}

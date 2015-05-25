@@ -2,7 +2,10 @@
 
 use Illuminate\Contracts\Events\Dispatcher as DispatcherContract;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
-
+use \App\Model\Article;
+use \App\Model\File;
+use \Illuminate\Support\Facades;
+use Session;
 class EventServiceProvider extends ServiceProvider {
 
 	/**
@@ -26,6 +29,17 @@ class EventServiceProvider extends ServiceProvider {
 	{
 		parent::boot($events);
 
+		    Article::saved(function($article)
+		    {
+		    	//dd($article);
+		    	$value = Session::pull('article.files');
+				$fileArray = [];
+				foreach($value as $item){
+					$fileArray[] = new File($item);
+				}
+
+		        $article->files()->saveMany($fileArray);
+		    });
 		//
 	}
 

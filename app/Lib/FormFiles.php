@@ -2,15 +2,20 @@
 namespace App\Lib;
 
 use SleepingOwl\Admin\FormItems\NamedFormItem;
-
+use \Illuminate\Support\Facades;
+use Session;
+use Input;
 class FormFiles extends NamedFormItem
 {
 
 	public function render()
 	{
 		$params = $this->getParams();
-		//var_dump($params);
+		$instance = $params['instance'];
+		//dd($instance->get());
 		return view('admin.formFiles', compact('params'));
     }
+
+
 
 }

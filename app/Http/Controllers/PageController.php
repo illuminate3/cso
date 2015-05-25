@@ -43,8 +43,9 @@ class PageController extends Controller {
 			$button = $category->siblings()->get();
 		
 		$section_name = $category->name;
+		$files = $category->files()->get();
 		
-		return view('pages.article.show',compact('category','articles','button','section_name'));
+		return view('pages.article.show',compact('category','articles','button','section_name','files'));
 	}
 	
 	/*

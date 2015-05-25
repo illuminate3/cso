@@ -14,8 +14,7 @@ Admin::model('App\Model\Article')->title('')->display(function ()
 		Column::string('activeWord')->label('Активность'),
 		Column::string('category.name')->label('Раздел'),
 		Column::lists('category.files.name')->label('Файлы'),
-		Column::datetime('created_at')->label('Дата создания')->format('d.m.Y H:i'),
-			
+		Column::datetime('created_at')->label('Дата создания')->format('d.m.Y H:i'),			
 	]);
 	return $display;
 })->createAndEdit(function ()
@@ -27,7 +26,7 @@ Admin::model('App\Model\Article')->title('')->display(function ()
 		FormItem::text('name', 'Название'),
 		FormItem::text('title', 'Title'),
 		FormItem::text('keywords', 'Keywords'),
-		FormItem::Files('file.name','Файлы'),
+		FormItem::view('admin.formFiles'),
 		FormItem::text('active', 'Активность'),
 		FormItem::ckeditor('text', 'Текст'),
 	]);
