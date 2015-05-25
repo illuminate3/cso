@@ -33,6 +33,8 @@ class EventServiceProvider extends ServiceProvider {
 		    {
 		    	//dd($article);
 		    	$value = Session::pull('article.files');
+		    	if(!$value)
+		    		return;
 				$fileArray = [];
 				foreach($value as $item){
 					$fileArray[] = new File($item);

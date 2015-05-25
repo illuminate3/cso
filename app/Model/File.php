@@ -15,5 +15,7 @@ class File extends Model {
 
 			return $this->belongsTo('App\Model\Article');
 		}
+		
+
 	
 }
