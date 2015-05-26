@@ -17,7 +17,7 @@ Route::get('page/{category}', ['as'=>'article.show','uses'=>'PageController@show
 
 Route::bind('category',function($slug){
 	
-	return App\Model\Category::where('slug','=',$slug)->first();
+	return App\Model\Category::where('slug','=',$slug)->firstOrFail();
 
 });
 

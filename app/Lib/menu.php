@@ -6,7 +6,10 @@ if(DB::table('categories')->exists()){
 	
 	Menu::handler('main')->hydrate(function()
 	  {
-	    return App\Model\Category::all();
+      $cache = Cache::remember('category.menu',Config::get('cache.stores.file.time'),function(){
+        return App\Model\Category::where('active','=',1)->get();
+      });
+	    return $cache;
 	  },
 	  function($children, $item)
 	  {

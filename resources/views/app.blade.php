@@ -243,7 +243,7 @@
                     <td class="foottext" width="50%">
                         <p itemscope="" itemtype="http://schema.org/Organization">© <span itemprop="name">Ейск комплексный центр социального обслуживания населения</span>
                             <br>Тел: <span itemprop="telephone">8 (86152) 2-14-94, 2-60-27, 2-59-97</span>
-                            <br><span itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress"><span itemprop="streetAddress">Адрес: г. Апшеронск, ул. Комарова, 74</span></span> <span itemprop="email" class="hide"></span></p>
+                            <br><span itemprop="address" itemscope="" itemtype="http://schema.org/PostalAddress"><span itemprop="streetAddress">Адрес: г. Ейск, ул. Коммунаров, 4</span></span> <span itemprop="email" class="hide"></span></p>
                     </td>
                     <td width="50%">
                         <a href="http://admkrai.krasnodar.ru/" target="_blank"><img class="footlabel" src="/images/bb2.jpg" alt=""></a>

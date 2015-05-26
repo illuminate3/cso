@@ -10,9 +10,6 @@ class Category extends \Kalnoy\Nestedset\Node {
 		return $this->hasMany('App\Model\Article');
 	}
 	
-	public function files(){
-		return $this->hasManyThrough('App\Model\File','App\Model\Article','category_id','article_id');
-	}
 	
 	public function getActiveWordAttribute()
 	{

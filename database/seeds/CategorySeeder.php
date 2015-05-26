@@ -77,7 +77,7 @@ class CategorySeeder extends Seeder{
 		]);
 		
 		$node = App\Model\Category::create([
-				'name' => 'Предписание органов государственного контроля и независимая оценка качества оказанных социальных услуг',
+				'name' => 'Предписание органов государственного контроля',
 				'slug' => 'predpisanie_organov_gosudarstvennogo',
 				'active'=>1,
 				'created_at'=>Carbon\Carbon::now(),

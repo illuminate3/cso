@@ -45,6 +45,7 @@ return [
 		'file' => [
 			'driver' => 'file',
 			'path'   => storage_path().'/framework/cache',
+			'time'=>'3600'
 		],
 
 		'memcached' => [

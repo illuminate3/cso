@@ -6,6 +6,7 @@ use \App\Model\Article;
 use \App\Model\File;
 use \Illuminate\Support\Facades;
 use Session;
+ use Illuminate\Database\Eloquent\ModelNotFoundException;
 class EventServiceProvider extends ServiceProvider {
 
 	/**
@@ -35,13 +36,14 @@ class EventServiceProvider extends ServiceProvider {
 		    	$value = Session::pull('article.files');
 		    	if(!$value)
 		    		return;
-				$fileArray = [];
-				foreach($value as $item){
-					$fileArray[] = new File($item);
-				}
 
-		        $article->files()->saveMany($fileArray);
+				foreach($value as $item){
+					$fileArray = new File($item);
+					 $article->files()->save($fileArray);
+				}
+       
 		    });
+		    
 		//
 	}
 

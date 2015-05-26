@@ -9,7 +9,7 @@ class Article extends Model {
 	
 	public function files(){
 		
-		return $this->hasMany('App\Model\File','article_id','id');
+		return $this->belongsToMany('App\Model\File');
 	}
 	
 	public function category(){
@@ -18,14 +18,22 @@ class Article extends Model {
 	
 	public function setfilesAttribute($filesList)
 	{
-		
+
+		 $this->files()->detach();
+		  if ( ! $filesList) 
+		  	return;
+		  if ( ! $this->exists) 
+		  	$this->save();
+
+		  $this->files()->attach($filesList);
+		/*
 		$filesArray = \App\Model\File::whereIn('id',$filesList)->get();
 		foreach($filesArray as $item){
 			
 			$item->article_id = $this->id;
 			$item->update();
 		}
-		
+		*/
 		
 	}
 	

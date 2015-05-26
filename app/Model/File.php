@@ -13,7 +13,7 @@ class File extends Model {
 
 		public function articles(){
 
-			return $this->belongsTo('App\Model\Article');
+			return $this->belongsToMany('App\Model\Article');
 		}
 		
 

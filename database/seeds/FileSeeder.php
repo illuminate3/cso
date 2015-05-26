@@ -13,12 +13,10 @@ class FileSeeder extends Seeder{
 			[
 				'name'=>'tesnig name',
 				'url'=>'/upload/doc/test.pdf',
-				'article_id'=>1,	
 			],
 			[
 				'name'=>'tesnig name2',
 				'url'=>'/upload/doc/test2.pdf',
-				'article_id'=>2,
 			]	
 		];
 		DB::table('files')->insert($data);

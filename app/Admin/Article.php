@@ -13,7 +13,7 @@ Admin::model('App\Model\Article')->title('')->display(function ()
 		Column::string('slug')->label('Код'),
 		Column::string('activeWord')->label('Активность'),
 		Column::string('category.name')->label('Раздел'),
-		Column::lists('category.files.name')->label('Файлы'),
+		Column::lists('files.name')->label('Файлы'),
 		Column::datetime('created_at')->label('Дата создания')->format('d.m.Y H:i'),			
 	]);
 	return $display;
@@ -27,7 +27,7 @@ Admin::model('App\Model\Article')->title('')->display(function ()
 		FormItem::text('title', 'Title'),
 		FormItem::text('keywords', 'Keywords'),
 		FormItem::view('admin.formFiles'),
-		FormItem::text('active', 'Активность'),
+		FormItem::checkbox('active', 'Активность'),
 		FormItem::ckeditor('text', 'Текст'),
 	]);
 	return $form;
@@ -41,7 +41,7 @@ Admin::model('App\Model\Article')->title('')->display(function ()
 		FormItem::text('title', 'Title'),
 		FormItem::text('keywords', 'Keywords'),
 		FormItem::multiselect('files', 'Files')->model('App\Model\File')->display('name'),
-		FormItem::text('active', 'Активность'),
+		FormItem::checkbox('active', 'Активность'),
 		FormItem::ckeditor('text', 'Текст'),
 	]);
 	return $form;
