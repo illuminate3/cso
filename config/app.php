@@ -148,7 +148,7 @@ return [
 		'App\Providers\RouteServiceProvider',
 		'Menu\MenuServiceProvider',
 		'App\Providers\MenuServiceProvider',
-		//'Barryvdh\Debugbar\ServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
 		'Illuminate\Html\HtmlServiceProvider',
 			
 

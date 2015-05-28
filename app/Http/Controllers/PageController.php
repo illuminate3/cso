@@ -8,7 +8,7 @@ use \Illuminate\Http\Response;
 use Excel;
 use Illuminate\Support\Facades\Facade;
 use Cache;
-
+use App\Commands\ArticleShowCommands;
 class PageController extends Controller {
 
 	/*
@@ -35,37 +35,13 @@ class PageController extends Controller {
 		return  view('pages.index',compact('section_name'));
 	}
 
-	public function show(Category $category){
-		
-		$articles = Cache::remember('page.category',\Config::get('cache.stores.file.time'),function() use($category){
-			return $category->articles()->first();
-		});
+	public function show(Category $category,Request $request){
 
-		//$files = $category->files()->get();
-		
-		if($category->hasChildren()){
-			$button= Cache::remember('personal.category.children',\Config::get('cache.stores.file.time'),function() use($category){
-				return $category->children()->get();	
-			});	 
-		}
-		
-		if(!$category->isRoot()){
-			$button= Cache::remember('personal.category.root',\Config::get('cache.stores.file.time'),function() use($category){
-				return $category->siblings()->get();
-			});	 
-		}
+		$res = $this->dispatch(new ArticleShowCommands($category,$request));
+
+		return view('pages.article.show')->with($res);
 
 		
-		
-		$section_name = $category->name;
-		if($articles){
-			$files = Cache::remember('personal.file',\Config::get('cache.stores.file.time'),function() use($articles){
-				return $articles->files()->get();
-			});	 
-
-		}
-		
-		return view('pages.article.show',compact('category','articles','button','section_name','files'));
 	}
 	
 	/*
@@ -82,33 +58,25 @@ class PageController extends Controller {
 			$i=0;
 		/******************************/
 	
-		$category = Cache::remember('personal.category',\Config::get('cache.stores.file.time'),function() use($category){
-			
-			return $category->where('slug','=','personal')->first();
-		});
+		$category = $category->where('slug','=','personal')->first();
+		
 
 		
 
-		$articles = Cache::remember('personal.page_'.$request->query('page'),\Config::get('cache.stores.file.time'),function() use ($personal,$pageCount){
+		$articles =  $personal->paginate($pageCount);
 		
-			return $personal->paginate($pageCount);
-		});
 		//$files = $category->files()->get();
 		
 		if($category->hasChildren()){
-			$button= Cache::remember('personal.category.children',\Config::get('cache.stores.file.time'),function() use($category){
-				
-				return $category->children()->get();	
-			});
+			$button=$category->children()->get();	
+			
 
 			 
 		}	
 		
 		if(!$category->isRoot()){
-			$button= Cache::remember('personal.category.root',\Config::get('cache.stores.file.time'),function() use($category){
-				
-				return $category->siblings()->get();
-			});	 
+			$button= $category->siblings()->get();
+			 
 		}
 		
 		$section_name = $category->name;
